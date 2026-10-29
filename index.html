@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f2ec" />
+    <title>FridgePolice | Shared fridge, less drama</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="FridgePolice home">
+          <span class="brand-mark" aria-hidden="true">F</span>
+          <span>Fridge<span class="brand-light">Police</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="household-label"><span class="live-dot"></span> MAPLE HOUSE</span>
+          <button class="button button-quiet" id="reset-demo" type="button">Reset demo</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">THE SHARED FRIDGE, UNDER CONTROL</p>
+            <h1>Good food.<br /><span>Clear boundaries.</span></h1>
+            <p class="hero-text">Track what’s in the fridge, reserve a fair portion, and keep the app honest when real life gets messy.</p>
+          </div>
+          <div class="hero-note">
+            <span class="note-icon" aria-hidden="true">✳</span>
+            <div>
+              <strong>Reality check</strong>
+              <p>Every bottle gets its own ID.<br />Every portion has an expiry.</p>
+            </div>
+          </div>
+        </section>
+
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+        <div id="storage-warning" class="notice notice-warning" role="alert" hidden></div>
+
+        <section class="dashboard-bar" aria-label="Household overview">
+          <div class="dashboard-title">
+            <div class="section-icon" aria-hidden="true">⌂</div>
+            <div>
+              <h2>Fridge overview</h2>
+              <p>Your household at a glance</p>
+            </div>
+          </div>
+          <div class="dashboard-stats">
+            <div class="stat"><strong id="item-count">0</strong><span>items tracked</span></div>
+            <div class="stat"><strong id="request-count">0</strong><span>open requests</span></div>
+            <label class="profile-picker">
+              <span>Acting as</span>
+              <select id="current-user" aria-label="Acting roommate">
+                <option>Alex</option>
+                <option>Jordan</option>
+                <option>Casey</option>
+                <option>Riley</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="inventory-column">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">WHAT’S IN THE FRIDGE</p>
+                <h2>Food inventory <span class="heading-count" id="inventory-count">0</span></h2>
+              </div>
+              <span class="availability-key"><span class="key-dot"></span> Available to request</span>
+            </div>
+            <div id="inventory-list" class="inventory-list"></div>
+          </div>
+
+          <aside class="side-column">
+            <section class="panel add-panel">
+              <div class="panel-heading">
+                <div class="panel-icon add-icon" aria-hidden="true">＋</div>
+                <div>
+                  <p class="eyebrow">NEW TO THE FRIDGE</p>
+                  <h2>Log an item</h2>
+                </div>
+              </div>
+              <form id="add-item-form" class="form-stack">
+                <label>
+                  <span>Food name</span>
+                  <input id="new-item-name" name="name" maxlength="60" placeholder="e.g. Oat milk" required />
+                </label>
+                <div class="form-row">
+                  <label>
+                    <span>Quantity (%)</span>
+                    <input id="new-item-quantity" name="quantity" type="number" min="1" max="100" step="1" value="100" required />
+                  </label>
+                  <label>
+                    <span>Owner</span>
+                    <select id="new-item-owner" name="owner">
+                      <option>Alex</option>
+                      <option>Jordan</option>
+                      <option>Casey</option>
+                      <option>Riley</option>
+                    </select>
+                  </label>
+                </div>
+                <button class="button button-primary button-full" type="submit">Add to inventory <span aria-hidden="true">↗</span></button>
+              </form>
+              <p class="form-hint">A unique item ID is created automatically, even for identical groceries.</p>
+            </section>
+
+            <section class="panel activity-panel">
+              <div class="panel-heading activity-heading">
+                <div class="panel-icon activity-icon" aria-hidden="true">↻</div>
+                <div>
+                  <p class="eyebrow">THE LATEST</p>
+                  <h2>Activity log</h2>
+                </div>
+              </div>
+              <ol id="activity-list" class="activity-list"></ol>
+            </section>
+          </aside>
+        </section>
+
+        <section class="scenario-strip" aria-label="Prototype behavior">
+          <div><span class="scenario-number">01</span><strong>No double-booking</strong><p>Requests reserve stock immediately.</p></div>
+          <div><span class="scenario-number">02</span><strong>No ghost approvals</strong><p>Requests expire or clear on spoilage.</p></div>
+          <div><span class="scenario-number">03</span><strong>Every item is unique</strong><p>Identical names still have separate IDs.</p></div>
+          <div><span class="scenario-number">04</span><strong>Reality can catch up</strong><p>Reconcile inventory when food is gone.</p></div>
+        </section>
+        <footer class="footer"><span>FRIDGEPOLICE</span><span>Made for roommates, not robots.</span><a href="./Changes.md">How it works ↗</a></footer>
+      </main>
+    </div>
+  </body>
+</html>
